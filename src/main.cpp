@@ -5,7 +5,7 @@
 #include "LGFX.h"
 
 Adafruit_MCP23X17 mcp;
-LGFX display;
+LGFX display1 = LGFX(19); //19 - current csPin
 
 void setup() {
   Serial.begin(115200);
@@ -17,20 +17,20 @@ void setup() {
 
   mcp.pinMode(0, INPUT_PULLUP);
 
-  display.init();
-  display.setRotation(display.getRotation() ^ 1);
-  display.setBrightness(128);
-  display.setColorDepth(24);
+  display1.init();
+  display1.setRotation(display1.getRotation() ^ 1);
+  display1.setBrightness(128);
+  display1.setColorDepth(24);
 
-  display.fillScreen(TFT_BLACK);
-  display.drawRect(0, 0, display.width(), display.height(), 0x00FF00U);
+  display1.fillScreen(TFT_BLACK);
+  display1.drawRect(0, 0, display1.width(), display1.height(), 0x00FF00U);
 
-  display.setTextColor(TFT_GREEN);
+  display1.setTextColor(TFT_GREEN);
 
-  display.setCursor(2, 40);
-  display.setFont(&fonts::Font4);
-  display.setTextDatum(textdatum_t::middle_center);
-  display.drawString("DELAY", display.width() / 2, display.height() / 2);
+  display1.setCursor(2, 40);
+  display1.setFont(&fonts::Font4);
+  display1.setTextDatum(textdatum_t::middle_center);
+  display1.drawString("DELAY", display1.width() / 2, display1.height() / 2);
 
   // start observer pattern //
   // buttons subjects init
@@ -49,14 +49,14 @@ void setup() {
 void loop() {
   Serial.println("loop");
 
-  display.fillScreen(TFT_GREEN);
-  display.setTextColor(TFT_BLACK);
-  display.drawString("DELAY", display.width() / 2, display.height() / 2);
+  display1.fillScreen(TFT_GREEN);
+  display1.setTextColor(TFT_BLACK);
+  display1.drawString("DELAY", display1.width() / 2, display1.height() / 2);
   delay(800);
 
-  display.fillScreen(TFT_BLACK);
-  display.setTextColor(TFT_GREEN);
-  display.drawString("DELAY", display.width() / 2, display.height() / 2);
+  display1.fillScreen(TFT_BLACK);
+  display1.setTextColor(TFT_GREEN);
+  display1.drawString("DELAY", display1.width() / 2, display1.height() / 2);
   delay(800);
 
   if(!mcp.digitalRead(0)) {
@@ -64,10 +64,10 @@ void loop() {
   }
 
   // observer
-  if(button1.isPressed()) {
-    button1.notifyObservers();
-  }
-  if(button2.isPressed()) {
-    button2.notifyObservers();
-  }
+  // if(button1.isPressed()) {
+  //   button1.notifyObservers();
+  // }
+  // if(button2.isPressed()) {
+  //   button2.notifyObservers();
+  // }
 }

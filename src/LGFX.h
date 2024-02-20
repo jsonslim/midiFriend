@@ -5,7 +5,7 @@ class LGFX : public lgfx::LGFX_Device {
   lgfx::Bus_SPI _bus_instance;
 
  public:
-  LGFX(void) {
+  LGFX(int csPin) {
     {
       auto cfg = _bus_instance.config();
       cfg.spi_host = VSPI_HOST;
@@ -27,7 +27,7 @@ class LGFX : public lgfx::LGFX_Device {
     {  // Configure display panel control settings.
       auto cfg = _panel_instance.config();
 
-      cfg.pin_cs = 19;
+      cfg.pin_cs = csPin;
       cfg.pin_rst = 4;
       cfg.pin_busy = -1;
 
