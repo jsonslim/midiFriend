@@ -1,14 +1,11 @@
-The best open source midi foot controller.
+The best open source midi foot controller :)
 
 Main advantages:
 * TFT displays on each button
 * Easily scalable code
-* Big touch display to set the device
+* Big touch display to set the device (WT32-SC01, 1st version)
 * WEB interface
 
-
-Main display module:
-* WT32-SC01 (1st version)
 
 Displays on the buttons:
 TFT Driver  | ST7735
