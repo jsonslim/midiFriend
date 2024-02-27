@@ -2,9 +2,9 @@
 
 #include "ButtonDriver.h"
 
-class ButtonDriverMCP : public ButtonDriver {
+class ButtonDriverDirect : public ButtonDriver {
  public:
-  ButtonDriverMCP() {}
+  ButtonDriverDirect() {}
 
   bool isPressed() override { return true; }
 };

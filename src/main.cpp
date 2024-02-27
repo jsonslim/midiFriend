@@ -2,14 +2,26 @@
 #include <Arduino.h>
 
 #include "Button.h"
+#include "ButtonDriverDirect.h"
+#include "ButtonDriverMCP.h"
 #include "LGFX.h"
+#include "MidiModule.h"
+#include "defines.h"
 
+// init vars
 Adafruit_MCP23X17 mcp;
-LGFX display1 = LGFX(19); //19 - current csPin
+LGFX display1 = LGFX(19);  // 19 - current csPin
+MidiModule midi_m;
+
+// buttons subjects init
+ButtonDriverMCP btnDrvMcp;
+Button btn1 = Button(&btnDrvMcp, 0);
 
 void setup() {
-  Serial.begin(115200);
-  pinMode(21, INPUT_PULLUP);
+  Serial1.begin(115200);
+  Serial2.begin(31250);  // midi port
+
+  pinMode(BTN_INTERRUPT, INPUT_PULLUP);
 
   if(!mcp.begin_I2C()) {
     Serial.println("MCP init error");
@@ -32,18 +44,8 @@ void setup() {
   display1.setTextDatum(textdatum_t::middle_center);
   display1.drawString("DELAY", display1.width() / 2, display1.height() / 2);
 
-  // start observer pattern //
-  // buttons subjects init
-  // todo add drivers and pins
-  // Button btn1 = new Button(,0);
-  // Button btn2 = new Button(,0);
-  // Button btn3 = new Button(,0);
-  // Button btn4 = new Button(,0);
-  // Button btn5 = new Button(,0);
-  // Button btn6 = new Button(,0);
-  // Button btn7 = new Button(,0);
-  // Button btn8 = new Button(,0);
-  // todo attach observers
+  // attach midi observer
+  btn1.attach(&midi_m);
 }
 
 void loop() {
@@ -64,10 +66,7 @@ void loop() {
   }
 
   // observer
-  // if(button1.isPressed()) {
-  //   button1.notifyObservers();
-  // }
-  // if(button2.isPressed()) {
-  //   button2.notifyObservers();
-  // }
+  if(btn1.getButtonState()) {
+    btn1.notifyObservers();
+  }
 }

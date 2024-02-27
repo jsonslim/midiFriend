@@ -17,7 +17,6 @@ public:
     void attach(Observer *observer);
     void detach(Observer *observer);
     void notifyObservers();
-    void checkButtonState();
     bool getButtonState(void);
 };
 
