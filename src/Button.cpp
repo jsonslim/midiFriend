@@ -1,22 +1,28 @@
 #include "Button.h"
 
+#include <Adafruit_MCP23X17.h>
+
 #include "ButtonDriver.h"
+
+Adafruit_MCP23X17 mcp;
 
 Button::Button(ButtonDriver *btnDriver, int pin) {
   this->driver = btnDriver;
+  this->pin = pin;
   for(int i = 0; i < MAX_OBSERVERS; ++i) {
     observers[i] = nullptr;
   }
+}
 
-  // use the pin in driver
+void Button::init(int mode) {
+  if(!mcp.begin_I2C()) {
+    Serial.println("MCP init error");
+  }
+  mcp.pinMode(this->pin, mode);
 }
 
 void Button::attach(Observer *observer) {
-  if(this->observerCount < MAX_OBSERVERS) {
-    observers[this->observerCount++] = observer;
-  } else {
-    // Handle the case where the array is full. Perhaps ignore or log an error.
-  }
+  observers[this->observerCount++] = observer;
 }
 
 void Button::detach(Observer *observer) {
@@ -43,4 +49,10 @@ void Button::notifyObservers() {
   }
 }
 
-bool Button::getButtonState(void) { return this->state; }
+bool Button::getButtonState(void) {
+  if(!mcp.digitalRead(0)) {
+    Serial.println("Button Pressed!");
+  }
+
+  return mcp.digitalRead(0);
+}

@@ -1,16 +1,19 @@
-#include <Adafruit_MCP23X17.h>
 #include <Arduino.h>
 
+#include "./observers/ButtonDisplay.h"
+#include "./observers/MidiModule.h"
 #include "Button.h"
 #include "ButtonDriverDirect.h"
 #include "ButtonDriverMCP.h"
 #include "LGFX.h"
-#include "MidiModule.h"
 #include "defines.h"
 
+// foo prototypes
+void IRAM_ATTR onInterrupt();
+
 // init vars
-Adafruit_MCP23X17 mcp;
 LGFX display1 = LGFX(19);  // 19 - current csPin
+ButtonDisplay btn_dsp1;
 MidiModule midi_m;
 
 // buttons subjects init
@@ -22,12 +25,7 @@ void setup() {
   Serial2.begin(31250);  // midi port
 
   pinMode(BTN_INTERRUPT, INPUT_PULLUP);
-
-  if(!mcp.begin_I2C()) {
-    Serial.println("MCP init error");
-  }
-
-  mcp.pinMode(0, INPUT_PULLUP);
+  attachInterrupt(BTN_INTERRUPT, onInterrupt, FALLING);
 
   display1.init();
   display1.setRotation(display1.getRotation() ^ 1);
@@ -46,6 +44,7 @@ void setup() {
 
   // attach midi observer
   btn1.attach(&midi_m);
+  btn1.attach(&btn_dsp1);
 }
 
 void loop() {
@@ -61,12 +60,13 @@ void loop() {
   display1.drawString("DELAY", display1.width() / 2, display1.height() / 2);
   delay(800);
 
-  if(!mcp.digitalRead(0)) {
-    Serial.println("Button Pressed!");
-  }
-
   // observer
   if(btn1.getButtonState()) {
     btn1.notifyObservers();
   }
+}
+
+void IRAM_ATTR onInterrupt() {
+  // check what button have been pressed
+  // update global state
 }
