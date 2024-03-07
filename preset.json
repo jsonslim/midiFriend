@@ -1,0 +1,14 @@
+{
+    "name": "pr1",
+    "buttons": [
+        {
+            "id": 1,
+            "dspText": "reverb",
+            "dspColor": "blue",
+            "ledOnColor": "rgbhexdigit",
+            "ledOffColor": "rgbhexdigit",
+            "midiCommand": [],
+            "type": "momentary"
+        }
+    ]
+}
