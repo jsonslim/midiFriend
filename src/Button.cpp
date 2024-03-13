@@ -49,8 +49,8 @@ void Button::notifyObservers() {
   }
 }
 
-bool Button::getButtonState(void) {
-  if(!mcp.digitalRead(0)) {
+bool Button::getState(void) {
+  if(!mcp.digitalRead(0)) {  // todo use mcp driver but before try debounce2mcp
     Serial.println("Button Pressed!");
   }
 

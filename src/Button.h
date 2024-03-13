@@ -19,7 +19,7 @@ public:
     void attach(Observer *observer);
     void detach(Observer *observer);
     void notifyObservers();
-    bool getButtonState(void);
+    bool getState(void);
 };
 
 #endif
