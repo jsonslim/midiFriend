@@ -61,7 +61,7 @@ void loop() {
   delay(800);
 
   // observer
-  if(btn1.getButtonState()) {
+  if(btn1.getState()) {
     btn1.notifyObservers();
   }
 }

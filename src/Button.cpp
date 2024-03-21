@@ -1,10 +1,11 @@
+#include <Arduino.h>
 #include "Button.h"
 
-#include <Adafruit_MCP23X17.h>
+#include <Adafruit_MCP23017.h>
 
 #include "ButtonDriver.h"
 
-Adafruit_MCP23X17 mcp;
+Adafruit_MCP23017 mcp;
 
 Button::Button(ButtonDriver *btnDriver, int pin) {
   this->driver = btnDriver;
@@ -15,9 +16,10 @@ Button::Button(ButtonDriver *btnDriver, int pin) {
 }
 
 void Button::init(int mode) {
-  if(!mcp.begin_I2C()) {
-    Serial.println("MCP init error");
-  }
+  mcp.begin();
+  // {
+    // Serial.println("MCP init error");
+  // }
   mcp.pinMode(this->pin, mode);
 }
 

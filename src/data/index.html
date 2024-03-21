@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid of Input Fields</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .select-wrap {
+            border: 1px solid #777;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            padding: 0 5px 5px;
+            /* width: 200px; */
+            background-color: #ebebeb;
+        }
+
+        .select-wrap label {
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #777;
+            padding: 2px 8px 0;
+        }
+
+        select {
+            background-color: #ebebeb;
+            border: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-container">
+        <div class="select-wrap">
+            <label>On</label>
+            <select style="width: 100%;">
+                <option value="Option 1">Click</option>
+                <option value="Option 2">Press</option>
+                <option value="Option 3">Press</option>
+                <option value="Option 4">Release</option>
+                <option value="Option 5">Double click</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Button</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Clear</label>
+        </div>
+        <div class="select-wrap">
+            <label>Send</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Channel</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Value</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Off value</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>On value</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Button</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Button</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Button</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Button name</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Led</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>On</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+        <div class="select-wrap">
+            <label>Off</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 1">0</option>
+                <option value="Option 2">1</option>
+                <option value="Option 3">2</option>
+                <option value="Option 4">3</option>
+                <option value="Option 5">4</option>
+            </select>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
