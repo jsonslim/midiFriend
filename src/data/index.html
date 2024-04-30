@@ -23,22 +23,28 @@
         .grid-container {
             display: grid;
             grid-template-areas:
-                'btn btn btn bname type'
-                'on on on send ch'
-                'onval onval onval offval offval'
-                'led led led oncolor offcolor'
-                'rst rst rst ph ph';
+                'btn  bname bname type'
+                'on send send ch'
+                'onval onval  offval offval'
+                'led oncolor oncolor  offcolor'
+                'rst rst ph ph';
 
             /* grid-template-columns: 2fr 1fr 1fr;
             grid-template-rows: repeat(5, 1fr); */
-            width: 600px;
+            width: 400px;
         }
 
         input,
         select {
+            font-family: 'Courier new';
+            font-size: 18px;
+            font-weight:bold;
+            color: rgb(80, 80, 80);
             width: 100%;
             padding: 4px;
             box-sizing: border-box;
+            border: 0px;
+            outline: none;
         }
 
         .item {
@@ -46,25 +52,19 @@
             border-radius: 4px;
             margin: 4px;
             padding: 4px;
-            /* background-color: #ebebeb; */
             min-height: 44px;
         }
 
         .item label {
             font-family: 'Courier new';
-            font-size: 18px;
-            text-transform: uppercase;
-            color: #777;
+            font-size: 16px;
+            /* text-transform: uppercase; */
+            color: rgb(32, 32, 32);
             padding: 2px 8px 0;
         }
         .empty {
             border: none;
             min-width: 1fr;           
-        }
-
-        select {
-            background-color: #ebebeb;
-            border: 0px;
         }
     </style>
 </head>
@@ -73,15 +73,29 @@
     <div class="grid-container">
         <div class="item btn">
             <label>Button</label>
+                <select style="width: 100%;">
+                        <option value="Option 0">0</option>
+                        <option value="Option 1">1</option>
+                        <option value="Option 2">2</option>
+                        <option value="Option 3">3</option>
+                        <option value="Option 4">4</option>
+                        <option value="Option 5">5</option>
+                        <option value="Option 6">6</option>
+                        <option value="Option 7">7</option>
+                </select>
+        </div>
+        <div class="item bname">
+            <label>Button name</label>
+            <input type="text" style="border: 1px solid gray">
+            <!--  add automatic save on input to json and  -->
+        </div>
+        <div class="item type">
+            <label>Type</label>
             <select name="color" style="width: 100%;">
-                <option value="Option 0">0</option>
-                <option value="Option 1">1</option>
-                <option value="Option 2">2</option>
-                <option value="Option 3">3</option>
-                <option value="Option 4">4</option>
-                <option value="Option 5">5</option>
-                <option value="Option 6">6</option>
-                <option value="Option 7">7</option>
+                <option value="Option 1">Momentary</option>
+                <option value="Option 2">Latch</option>
+                <option value="Option 3">Analog</option>
+                <option value="Option 4">Jog wheel</option>
             </select>
         </div>
         <div class="item on">
@@ -92,9 +106,6 @@
                 <option value="Option 4">Release</option>
                 <option value="Option 5">Double click</option>
             </select>
-        </div>
-        <div class="item rst">
-            <button>Reset</button>
         </div>
         <div class="item send">
             <label>Send</label>
@@ -112,15 +123,6 @@
                 <option value="Option 2">2</option>
                 <option value="Option 3">3</option>
                 <option value="Option 4">4</option>
-            </select>
-        </div>
-        <div class="item type">
-            <label>Type</label>
-            <select name="color" style="width: 100%;">
-                <option value="Option 1">Momentary</option>
-                <option value="Option 2">Latch</option>
-                <option value="Option 3">Analog</option>
-                <option value="Option 4">Jog wheel</option>
             </select>
         </div>
         <div class="item onval">
@@ -143,11 +145,6 @@
                 <option value="Option 5">4</option>
             </select>
         </div>
-        <div class="item bname">
-            <label>Button name</label>
-            <input type="text" id="fname">
-            <!--  add automatic save on input to json and  -->
-        </div>
         <div class="item led">
             <label>Led</label>
             <select name="color" style="width: 100%;">
@@ -169,7 +166,11 @@
             <label>Off</label>
             <input type="color" />
         </div>
+        <div class="item rst">
+            <button>Reset</button>
+        </div>
         <div class="item ph">
+            <button>Test</button>
         </div>
 
 
