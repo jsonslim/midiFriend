@@ -4,36 +4,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid of Input Fields</title>
+    <title>Button component</title>
     <style>
+        .btn { grid-area: btn; }
+        .on { grid-area: on; }
+        .rst { grid-area: rst; }
+        .send { grid-area: send; }
+        .ch { grid-area: ch; }        
+        .type { grid-area: type; }
+        .onval { grid-area: onval; }
+        .offval { grid-area: offval; }      
+        .bname { grid-area: bname; }
+        .led { grid-area: led; }
+        .offcolor { grid-area: offcolor; }
+        .oncolor { grid-area: oncolor; }
+        .ph { grid-area: ph; }
+
         .grid-container {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            grid-template-rows: repeat(5, 1fr);
-            gap: 10px;
+            grid-template-areas:
+                'btn btn btn bname type'
+                'on on on send ch'
+                'onval onval onval offval offval'
+                'led led led oncolor offcolor'
+                'rst rst rst ph ph';
+
+            /* grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: repeat(5, 1fr); */
+            width: 600px;
         }
 
         input,
         select {
             width: 100%;
-            padding: 5px;
+            padding: 4px;
             box-sizing: border-box;
         }
 
-        .select-wrap {
+        .item {
             border: 1px solid #777;
             border-radius: 4px;
-            margin-bottom: 10px;
-            padding: 0 5px 5px;
-            /* width: 200px; */
-            background-color: #ebebeb;
+            margin: 4px;
+            padding: 4px;
+            /* background-color: #ebebeb; */
+            min-height: 44px;
         }
 
-        .select-wrap label {
+        .item label {
+            font-family: 'Courier new';
             font-size: 18px;
             text-transform: uppercase;
             color: #777;
             padding: 2px 8px 0;
+        }
+        .empty {
+            border: none;
+            min-width: 1fr;           
         }
 
         select {
@@ -44,72 +70,60 @@
 </head>
 
 <body>
-
     <div class="grid-container">
-        <div class="select-wrap">
+        <div class="item btn">
+            <label>Button</label>
+            <select name="color" style="width: 100%;">
+                <option value="Option 0">0</option>
+                <option value="Option 1">1</option>
+                <option value="Option 2">2</option>
+                <option value="Option 3">3</option>
+                <option value="Option 4">4</option>
+                <option value="Option 5">5</option>
+                <option value="Option 6">6</option>
+                <option value="Option 7">7</option>
+            </select>
+        </div>
+        <div class="item on">
             <label>On</label>
             <select style="width: 100%;">
                 <option value="Option 1">Click</option>
-                <option value="Option 2">Press</option>
                 <option value="Option 3">Press</option>
                 <option value="Option 4">Release</option>
                 <option value="Option 5">Double click</option>
             </select>
         </div>
-        <div class="select-wrap">
-            <label>Button</label>
-            <select name="color" style="width: 100%;">
-                <option value="Option 1">0</option>
-                <option value="Option 2">1</option>
-                <option value="Option 3">2</option>
-                <option value="Option 4">3</option>
-                <option value="Option 5">4</option>
-            </select>
+        <div class="item rst">
+            <button>Reset</button>
         </div>
-        <div class="select-wrap">
-            <label>Clear</label>
-        </div>
-        <div class="select-wrap">
+        <div class="item send">
             <label>Send</label>
             <select name="color" style="width: 100%;">
-                <option value="Option 1">0</option>
-                <option value="Option 2">1</option>
-                <option value="Option 3">2</option>
-                <option value="Option 4">3</option>
-                <option value="Option 5">4</option>
+                <option value="Option 1">Control change</option>
+                <option value="Option 2">Program change</option>
+                <option value="Option 3">Note</option>
             </select>
         </div>
-        <div class="select-wrap">
+        <div class="item ch">
             <label>Channel</label>
             <select name="color" style="width: 100%;">
-                <option value="Option 1">0</option>
-                <option value="Option 2">1</option>
-                <option value="Option 3">2</option>
-                <option value="Option 4">3</option>
-                <option value="Option 5">4</option>
+                <option value="Option 0">0</option>
+                <option value="Option 1">1</option>
+                <option value="Option 2">2</option>
+                <option value="Option 3">3</option>
+                <option value="Option 4">4</option>
             </select>
         </div>
-        <div class="select-wrap">
-            <label>Value</label>
+        <div class="item type">
+            <label>Type</label>
             <select name="color" style="width: 100%;">
-                <option value="Option 1">0</option>
-                <option value="Option 2">1</option>
-                <option value="Option 3">2</option>
-                <option value="Option 4">3</option>
-                <option value="Option 5">4</option>
+                <option value="Option 1">Momentary</option>
+                <option value="Option 2">Latch</option>
+                <option value="Option 3">Analog</option>
+                <option value="Option 4">Jog wheel</option>
             </select>
         </div>
-        <div class="select-wrap">
-            <label>Off value</label>
-            <select name="color" style="width: 100%;">
-                <option value="Option 1">0</option>
-                <option value="Option 2">1</option>
-                <option value="Option 3">2</option>
-                <option value="Option 4">3</option>
-                <option value="Option 5">4</option>
-            </select>
-        </div>
-        <div class="select-wrap">
+        <div class="item onval">
             <label>On value</label>
             <select name="color" style="width: 100%;">
                 <option value="Option 1">0</option>
@@ -119,8 +133,8 @@
                 <option value="Option 5">4</option>
             </select>
         </div>
-        <div class="select-wrap">
-            <label>Button</label>
+        <div class="item offval">
+            <label>Off value</label>
             <select name="color" style="width: 100%;">
                 <option value="Option 1">0</option>
                 <option value="Option 2">1</option>
@@ -129,53 +143,33 @@
                 <option value="Option 5">4</option>
             </select>
         </div>
-        <div class="select-wrap">
-            <label>Button</label>
-            <select name="color" style="width: 100%;">
-                <option value="Option 1">0</option>
-                <option value="Option 2">1</option>
-                <option value="Option 3">2</option>
-                <option value="Option 4">3</option>
-                <option value="Option 5">4</option>
-            </select>
-        </div>
-        <div class="select-wrap">
-            <label>Button</label>
-            <select name="color" style="width: 100%;">
-                <option value="Option 1">0</option>
-                <option value="Option 2">1</option>
-                <option value="Option 3">2</option>
-                <option value="Option 4">3</option>
-                <option value="Option 5">4</option>
-            </select>
-        </div>
-        <div class="select-wrap">
+        <div class="item bname">
             <label>Button name</label>
-            <select name="color" style="width: 100%;">
-                <option value="Option 1">0</option>
-                <option value="Option 2">1</option>
-                <option value="Option 3">2</option>
-                <option value="Option 4">3</option>
-                <option value="Option 5">4</option>
-            </select>
+            <input type="text" id="fname">
+            <!--  add automatic save on input to json and  -->
         </div>
-        <div class="select-wrap">
+        <div class="item led">
             <label>Led</label>
             <select name="color" style="width: 100%;">
-                <option value="Option 1">0</option>
-                <option value="Option 2">1</option>
-                <option value="Option 3">2</option>
-                <option value="Option 4">3</option>
-                <option value="Option 5">4</option>
+                <option value="Option 0">0</option>
+                <option value="Option 1">1</option>
+                <option value="Option 2">2</option>
+                <option value="Option 3">3</option>
+                <option value="Option 4">4</option>
+                <option value="Option 5">5</option>
+                <option value="Option 6">6</option>
+                <option value="Option 7">7</option>
             </select>
         </div>
-        <div class="select-wrap">
+        <div class="item oncolor">
             <label>On</label>
             <input type="color" />
         </div>
-        <div class="select-wrap">
+        <div class="item offcolor">
             <label>Off</label>
             <input type="color" />
+        </div>
+        <div class="item ph">
         </div>
 
 
